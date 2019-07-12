@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Ranking By Section
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ion-list *ngFor="let s of sections">
+        <ion-list-header>
+            <ion-label>{{ s }}</ion-label>
+          </ion-list-header>
+      <ion-item *ngFor="let r of rankData[s]">
+  
+        <ion-label>
+          <h2>{{ r.name }}</h2>
+          <h3>{{ r.college }}</h3>
+          <p>Rank: {{ r.rank }}&nbsp;&nbsp;&nbsp;Score: {{ r.score }}&nbsp;&nbsp;&nbsp;Gender: {{ r.gender }}</p>
+        </ion-label>
+        <ion-icon *ngIf="r.color" name="trophy" slot="end" [class]="r.color"></ion-icon>
+      </ion-item>
+      
+    </ion-list>
+  </ion-content>

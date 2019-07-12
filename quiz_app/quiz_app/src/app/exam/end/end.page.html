@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Key To Corrections</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+        <ion-card-header>
+          <!--<ion-card-subtitle>{{ q.qid }}</ion-card-subtitle>-->
+          <ion-card-title>Legends
+          </ion-card-title>
+        </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+        <ion-item>
+            <ion-label text-wrap>Correct Answer and Your Answer Matched</ion-label>
+            <ion-radio  color="success" slot="start"  checked></ion-radio>
+        </ion-item>
+        <ion-item>
+            <ion-label text-wrap>Correct Answer</ion-label>
+            <ion-radio  slot="start"  checked></ion-radio>
+        </ion-item>
+        <ion-item>
+            <ion-label text-wrap>Wrong Answer</ion-label>
+          <ion-radio  color="danger" slot="start"  checked></ion-radio>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngFor="let q of question">
+    <ion-card-header>
+      <!--<ion-card-subtitle>{{ q.qid }}</ion-card-subtitle>-->
+      <ion-card-title>{{ q.qns }}
+      </ion-card-title>
+    </ion-card-header>
+      
+    <ion-card-content>
+          <ion-item *ngFor="let o of q.options">
+              <ion-label text-wrap>{{ o.option }}</ion-label>
+              <div *ngIf="q.user_ans == o.optionid && q.ansid == o.optionid">
+                  <ion-radio  color="success" slot="start"  checked></ion-radio>
+              </div>
+              <div *ngIf="q.user_ans != o.optionid && q.ansid == o.optionid">
+                  <ion-radio  slot="start"  checked></ion-radio>
+              </div>
+              <div *ngIf="q.user_ans == o.optionid && q.ansid != o.optionid">
+                  <ion-radio color="danger" slot="start"  checked></ion-radio>
+              </div>
+              <div *ngIf="q.user_ans != o.optionid && q.ansid != o.optionid">
+                  <ion-radio slot="start" ></ion-radio>
+              </div>
+          </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-button expand="block" fill="outline" color="primary" (click)="close()">Close</ion-button>
+</ion-footer>

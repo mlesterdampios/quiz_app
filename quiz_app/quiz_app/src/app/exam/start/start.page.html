@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ quiz.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+          <!--<ion-card-subtitle>{{ q.qid }}</ion-card-subtitle>-->
+          <ion-card-title>Instructions
+          </ion-card-title>
+        </ion-card-header>
+          
+        <ion-card-content>
+          You must answer each question by choosing the best answer.
+          Submit when done.
+        </ion-card-content>
+      </ion-card>
+  <ion-card *ngFor="let q of question">
+    <ion-card-header>
+      <!--<ion-card-subtitle>{{ q.qid }}</ion-card-subtitle>-->
+      <ion-card-title>{{ q.qns }}
+      </ion-card-title>
+    </ion-card-header>
+      
+    <ion-card-content>
+      <ion-radio-group [(ngModel)]="q.user_ans" name="{{q.eid}}" id="{{q.eid}}">
+          <ion-item *ngFor="let o of q.options">
+            <ion-label text-wrap>{{ o.option }}</ion-label>
+            <ion-radio  slot="start" value="{{ o.optionid }}"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+    </ion-card-content>
+  </ion-card>
+  <ion-button *ngIf="started" expand="full" color="primary" (click)="submit()">Submit</ion-button>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+      <ion-title>{{ timeLeft }} seconds remaining</ion-title>
+    </ion-toolbar>
+  </ion-footer>

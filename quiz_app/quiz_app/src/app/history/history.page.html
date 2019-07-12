@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        History
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+    <ion-searchbar animated (ionCancel)="searchCancel()" (ionChange)="search($event)"></ion-searchbar>
+    <ion-grid>
+        <ion-row class="header">
+              <ion-col><h4>Title</h4></ion-col>
+              <ion-col><h4>Items</h4></ion-col>
+              <ion-col><h4>Right</h4></ion-col>
+              <ion-col><h4>Wrong</h4></ion-col>
+        </ion-row>
+        <ion-row class="body" *ngFor="let h of history">
+              <ion-col>{{h.title}}</ion-col>
+              <ion-col>{{h.level}}</ion-col>
+              <ion-col>{{h.right}}</ion-col>
+              <ion-col>{{h.wrong}}</ion-col>
+        </ion-row>
+      </ion-grid>
+</ion-content>

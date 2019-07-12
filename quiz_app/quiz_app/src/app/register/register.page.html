@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Register
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+      <ion-item-divider color="primary">Personal Details</ion-item-divider>
+  
+      <ion-item>
+        <ion-label position="floating">First Name</ion-label>
+        <ion-input type="text" [(ngModel)]="fName" maxlength="50"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Middle Name</ion-label>
+        <ion-input type="text" [(ngModel)]="mName" maxlength="50"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Last Name</ion-label>
+        <ion-input type="text" [(ngModel)]="lName" maxlength="50"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label position="floating">Sex</ion-label>
+          <ion-select [(ngModel)]="newUser.gender">
+            <ion-select-option value="M">Male</ion-select-option>
+            <ion-select-option value="F">Female</ion-select-option>
+          </ion-select>
+      </ion-item>
+      <ion-item>
+          <ion-label position="floating">Year</ion-label>
+          <ion-select [(ngModel)]="year">
+            <ion-select-option *ngFor="let y of years" [value]="y">Grade {{ y }}</ion-select-option>
+          </ion-select>
+      </ion-item>
+      <ion-item *ngIf="year">
+        <ion-label position="floating">Section</ion-label>
+        <ion-select [(ngModel)]="section" >
+          <ion-select-option *ngFor="let s of sections[year]" [value]="s">{{ s }}</ion-select-option>
+        </ion-select>
+    </ion-item>
+      <ion-item>
+          <ion-label position="floating">Mobile Number</ion-label>
+          <ion-input type="tel" maxlength="11" [(ngModel)]="newUser.mob"></ion-input>
+      </ion-item>
+      <ion-item-divider color="primary">Account Details</ion-item-divider>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" [(ngModel)]="newUser.email" (ionBlur)="checkEmail()"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Password" [type]="passwordType" [(ngModel)]="newUser.password"></ion-input>
+        <ion-icon item-end [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  
+  <ion-footer>
+      <ion-button expand="block" color="primary" (click)="signup()">Submit</ion-button>
+  </ion-footer>

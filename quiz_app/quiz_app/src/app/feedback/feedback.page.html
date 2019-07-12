@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Feedback
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+      <ion-item-divider color="primary">Feedback Details</ion-item-divider>
+  
+      <ion-item>
+        <ion-label position="floating">Full Name</ion-label>
+        <ion-input type="text" [(ngModel)]="feedback.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" [(ngModel)]="feedback.email" (ionBlur)="checkEmail()"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Subject</ion-label>
+        <ion-input type="text" [(ngModel)]="feedback.subject"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-textarea [(ngModel)]="feedback.feedback"></ion-textarea>
+      </ion-item>
+      <ion-item>
+          <ion-label>{{imageURI}}</ion-label>
+          <ion-button color="secondary" (click)="getImage()">Attach Image</ion-button>
+        </ion-item>
+    </ion-list>
+  </ion-content>
+  
+  <ion-footer>
+      <ion-button expand="block" color="primary" (click)="submit()">Submit</ion-button>
+  </ion-footer>

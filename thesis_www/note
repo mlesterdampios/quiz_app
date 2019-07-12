@@ -1,0 +1,28 @@
+SELECT * FROM `quiz`;
+/*
+[{
+  	eid : "xxx",
+    title : "xxx",
+    sahi : 0, # +points
+    wrong : 0, # -points
+    total : 0,
+    time : 0,
+    intro : ""
+}]
+*/
+
+SELECT * FROM `questions` inner JOIN answer on answer.qid=questions.qid where questions.eid like '5bb53a6c03af1'; #eid yung unique identifier ng quiz; qid yung unique identifier ng question
+
+select * from options where qid like '5bb53af9edcbf'; #optionid yung unique identifier ng choices; para ma check kung tama ba yung sagot : optionid == ansid ?
+
+/*
+[{
+  	qid : "xxx",
+    qns : "what is xxx ?",
+    ansid : xxx,
+    options : [{
+    	qid : "optionid",
+        option : "Answer"
+    }]
+}]
+*/
